@@ -10,3 +10,15 @@ export const geocode = async (region: string) => {
   const location = response.body[0]
   return location
 }
+
+export const formatRegionName = (region: string) => {
+  // example region:
+  // 1, "Cyprus"
+  // 2, "Ko Samui, Surat Thani Province, 84320, Thailand"
+  const parts = region.split(",")
+  const shortRegion = [parts[0].trim()]
+  if (parts.length > 1) {
+    shortRegion.push(parts[parts.length - 1].trim())
+  }
+  return shortRegion.join(", ")
+}
