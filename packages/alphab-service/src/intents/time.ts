@@ -8,11 +8,11 @@ const intent = async (msg: any, data: any) => {
     return `The time is ${time}`
   }
   const searchRegion = data.location[0].value
-  const coords = await geocode(searchRegion)
-  const region = formatRegionName(coords.display_name)
+  const location = await geocode(searchRegion)
+  const region = formatRegionName(location.display_name)
   const date = await timezone({
-    lat: coords.lat,
-    lng: coords.lon,
+    lat: location.lat,
+    lng: location.lon,
   })
   const time = timeFromTimeStamp(date.timestamp)
 

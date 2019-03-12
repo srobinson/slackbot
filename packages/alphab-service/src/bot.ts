@@ -26,8 +26,7 @@ slackClient.on("message", async (msg: any) => {
           const answer = await require(`./intents/${intent.value}.ts`).default(msg, res)
           await slackClient.sendMessage(answer, msg.channel)
         } catch (e) {
-          // no-op
-          await slackClient.sendMessage("I'm sorry", msg.channel)
+          await slackClient.sendMessage(e.message, msg.channel)
           console.log(e)
         }
       }
