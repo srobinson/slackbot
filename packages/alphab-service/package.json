@@ -1,0 +1,19 @@
+{
+  "name": "@alphab/service",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "scripts": {
+    "dev": "ts-node-dev src/index.ts",
+    "lint": "tslint 'src/**/*.ts'",
+    "prepare": "echo '@alphab/service' && tsc",
+    "start": "NODE_ENV=production && NPM_CONFIG_LOGLEVEL=info && node dist/index.js",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@alphab/client": "0.0.1",
+    "@alphab/logging": "0.0.1",
+    "@alphab/utils": "0.0.1"
+  }
+}

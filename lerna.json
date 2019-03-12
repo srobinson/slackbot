@@ -1,0 +1,18 @@
+{
+  "lerna": "3.13.0",
+  "command": {
+    "publish": {
+      "allowBranch": "master",
+      "message": "chore(release): publish"
+    }
+  },
+  "ignoreChanges": ["**/tests/**", "**/*.md"],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent",
+  "independent": true
+}
+

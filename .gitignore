@@ -1,0 +1,4 @@
+.env.prod
+dist
+node_modules
+SCRATCH

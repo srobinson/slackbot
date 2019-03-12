@@ -1,0 +1,15 @@
+{
+  "name": "@alphab/domain",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "scripts": {
+    "lint": "tslint 'src/**/*.ts'",
+    "prepare": "echo '@alphab/domain' && tsc",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@alphab/utils": "0.0.1"
+  }
+}

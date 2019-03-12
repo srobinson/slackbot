@@ -1,0 +1,58 @@
+{
+  "name": "@alphab/mono-template",
+  "version": "0.0.0-mono",
+  "description": "",
+  "private": true,
+  "engines": {
+    "node": "10.15.1"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "yarn clean && lerna bootstrap",
+    "clean": "lerna clean --yes && yarn clean:dist",
+    "clean:dist": "rimraf packages/**/dist",
+    "dev": "lerna run --parallel dev",
+    "lint": "lerna run lint",
+    "prepare": "lerna run prepare",
+    "start": "lerna run start",
+    "test": "yarn lint && NODE_ENV=test jest --runInBand --env=node --colors",
+    "test:watch": "yarn lint && NODE_ENV=test jest --runInBand --env=node --colors --watch",
+    "watch": "lerna run --parallel watch"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "@slack/client": "4.11.0",
+    "@types/superagent": "4.1.0",
+    "core-js": "2.6.5",
+    "dotenv": "6.2.0",
+    "express": "4.16.4",
+    "express-async-errors": "3.1.1",
+    "moment": "2.24.0",
+    "superagent": "4.1.0",
+    "uuid": "3.3.2",
+    "winston": "3.2.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "6.1.0",
+    "@types/express": "4.16.1",
+    "@types/jest": "24.0.6",
+    "@types/moment": "2.13.0",
+    "@types/uuid": "3.4.4",
+    "@types/winston": "2.4.4",
+    "jest": "24.1.0",
+    "jest-cli": "24.1.0",
+    "lerna": "3.13.0",
+    "prettier": "1.16.4",
+    "prettier-tslint": "0.4.2",
+    "ts-jest": "24.0.0",
+    "ts-node-dev": "1.0.0-pre.32",
+    "tslint": "5.13.0",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-config-security": "1.15.0",
+    "typescript": "3.3.3333"
+  },
+  "sideEffects": false
+}
