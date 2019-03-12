@@ -5,7 +5,8 @@ import "./config"
 const WIT_TOKEN = process.env.WIT_TOKEN || "na"
 const WIT_URL = process.env.WIT_URL || "https://api.wit.ai/message"
 const WIT_V_PARAM = process.env.WIT_V_PARAM
-export const ask = async (message: string) => {
+
+export const askWit = async (message: string) => {
   return request
     .get(WIT_URL)
     .set("Authorization", "Bearer " + WIT_TOKEN)

@@ -1,4 +1,5 @@
 .env.prod
 dist
+exports.sh
 node_modules
 SCRATCH

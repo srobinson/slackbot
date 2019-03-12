@@ -1,18 +1,35 @@
 /* tslint:disable:no-any */
-import {timezone} from "@alphab/client"
+import {geocode, timezone} from "@alphab/client"
+import {timeFromTimeStamp} from "@alphab/utils"
 
-const intent = async (data: any) => {
-  if (!(data.location && data.location[0].resolved)) {
-    return `Sorry, I'm afraid I can't tell the time for that location`
+const intent = async (msg: any, data: any) => {
+  if (!data.location) {
+    const time = timeFromTimeStamp(msg.ts)
+    return `The time is ${time}`
   }
 
-  const location = data.location[0].resolved.values[0]
-  const time = await timezone({
-    lat: location.coords.lat,
-    lng: location.coords.long,
+  const searchRegion = data.location[0].value
+  const coords = await geocode(searchRegion)
+
+  // example display_name:
+  // 1, "Cyprus"
+  // 2, "Ko Samui, Surat Thani Province, 84320, Thailand"
+  const parts = coords.display_name.split(",")
+  const shortRegion = [parts[0]]
+  if (parts.length > 1) {
+    shortRegion.push(parts[parts.length - 1])
+  }
+
+  const region = shortRegion.join(", ")
+
+  const date = await timezone({
+    lat: coords.lat,
+    lng: coords.lon,
   })
 
-  return `The time is ${time.formatted} in ${location.name}`
+  const time = timeFromTimeStamp(date.timestamp)
+
+  return `The time in ${region} is ${time}`
 }
 
 export default intent
